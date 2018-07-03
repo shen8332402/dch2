@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digitalchina.dch.testdemo.mapper.TestDemoMapper"> 
+
+<!--  <resultMap type="com.digitalchina.dch.testdemo.model.Student" id="studentList">  
+                <result property="id" column="id"/>  
+                <result property="name" column="name"/>  
+                <result property="address" column="address"/>  
+                <result property="tel" column="tel"/> 
+                <result property="score" column="score"/> 
+        </resultMap> -->   
+   <insert id="addData" parameterType="com.digitalchina.dch.testdemo.model.Student" keyColumn="id" useGeneratedKeys="true">
+		insert into student(name,address,tel,score)
+		values(#{name},#{address},#{tel},#{score})
+    </insert>
+    <select id="qryDataReturnClass" parameterType="java.lang.Long" resultType="com.digitalchina.dch.testdemo.model.Student">  
+    select * from student a where a.id=#{id}
+    </select>
+    
+    <delete id="delData" parameterType="java.lang.Long" >
+		   delete from student where id = #{id};
+   </delete> 
+   
+   <select id="qryDataListReturnLM"  resultType="java.util.Map">  
+    select * from student a 
+    </select> 
+    
+    <select id="qryDataListReturnLC"  resultType="com.digitalchina.dch.testdemo.model.Student">  
+    select * from student a 
+    </select> 
+      
+</mapper>  

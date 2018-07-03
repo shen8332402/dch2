@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digitalchina.dch.datamsg.mapper.DataMsgMapper">  
+    <select id="qryDataCount" resultType="java.util.Map">  
+    select 
+				sum(case when a.SENDINGAPPLICATION = 'ICU' then 1 else 0 end) as ICU,
+				sum(case when a.SENDINGAPPLICATION = 'LIS' then 1 else 0 end) as LIS,
+				sum(case when a.SENDINGAPPLICATION = 'CIS' then 1 else 0 end) as CIS,
+				sum(case when a.SENDINGAPPLICATION = 'PACS' then 1 else 0 end) as PACS,
+				sum(case when a.SENDINGAPPLICATION = 'HIS' then 1 else 0 end) as HIS,
+				sum(case when a.SENDINGAPPLICATION = 'CSS' then 1 else 0 end) as CSS,
+				sum(case when a.SENDINGAPPLICATION = 'PIS' then 1 else 0 end) as PIS 
+				from DCH_MSG a
+    </select>  
+      
+      
+   <!--  <resultMap type="Student" id="StudentResult">  
+        <id property="id" column="id"/>  
+        <result property="name" column="name"/>  
+        <result property="age" column="age"/>  
+        <association property="address" column="addid" select="com.qbd.mapper.AddressMappers.findbyid">      
+        </association>  
+        <association property="grade" column="gid" select="com.qbd.mapper.GradeMappers.findbyid">      
+        </association>  
+    </resultMap>  --> 
+</mapper>  

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digitalchina.dch.exceldemo.mapper.ExcelDemoMapper"> 
+<insert id="insertInfoBatch" parameterType="java.util.List">  
+    insert into student (name, address,tel, score)  
+    values  
+    <foreach collection="list" item="item" index="index" separator=",">  
+      (#{item.name}, #{item.address}, #{item.tel},#{item.score})  
+    </foreach>  
+</insert>
+
+ <select id="selectApartInfo"  resultType="Student">  
+    select * from student a 
+    </select> 
+      
+</mapper>  
